@@ -14,7 +14,7 @@ $app = new \Slim\Slim(array(
 $view = $app->view;
 $view->parserOptions = array(
     'debug' => true,
-    'cache' => APP_ROOT . '/cache',
+    'cache' => APP_ROOT . '/var/cache',
 );
 
 $app->get('/', function() use ($app) {
@@ -22,19 +22,11 @@ $app->get('/', function() use ($app) {
 }); 
 
 $app->get('/api/start', 'API', function() use ($app) {
-  $app->render(200, ['api' => 'start']);
+  $app->render(200, ['times' => '10', 'sets' => '3', 'pause' => '20']);
 });
 
-$app->get('/api/stop', 'API', function() use ($app) {
-  $app->render(200, ['api' => 'stop']);
-});
-
-$app->get('/api/info', 'API', function() use ($app) {
-  $app->render(200, ['api' => 'info']);
-});
-
-$app->get('/api/replay', 'API', function() use ($app) {
-  $app->render(200, ['api' => 'replay']);
+$app->get('/api/poll', 'API', function() use ($app) {
+  $app->render(200, ['process' => 'done', 'like' => 'yes']);
 });
 
 $app->run();
