@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        
+        <title>{% block title %}{% endblock %} - IronGlove</title>
+        
+        <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400'  type='text/css' />
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"  type='text/css' />
+
+        <link rel="stylesheet" href="public/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="public/css/style.css"/>
+        
+        <script type="text/javascript" src="public/js/jquery-1.10.2.min.js"></script>
+
+    </head>
+    <body>
+        <div class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="/" class="navbar-brand"><i class="fa fa-tachometer"></i>&nbsp;Iron<strong>Glove</strong></a>
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar-main" aria-expanded="true">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/my">My Workout</a></li>
+                        <li><a href="/workout">Buds' Workout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="col-xs-12">
+                {% block content %}
+                {% endblock %}    
+            </div>
+        </div>
+        <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
+    </body>
+</html>

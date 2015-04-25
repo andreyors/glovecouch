@@ -18,14 +18,24 @@ $view->parserOptions = array(
 );
 
 $app->get('/', function() use ($app) {
-  $app->render('frontend/index/index.twig');
+  $app->render('index/index.twig');
+});
+
+$app->get('/my', function() use ($app) {
+  $app->render('index/my.twig');
 }); 
 
-$app->get('/api/start', 'API', function() use ($app) {
+$app->get('/workout', function() use ($app) {
+  $app->render('index/workout.twig');
+});
+
+$app->get('/api/clinch', 'API', function() use ($app) {
   $app->render(200, ['times' => '10', 'sets' => '3', 'pause' => '20']);
 });
 
-$app->get('/api/poll', 'API', function() use ($app) {
+$app->post('/api/poll', 'API', function() use ($app) {
+  $data = $app->request->getBody();
+  
   $app->render(200, ['process' => 'done', 'like' => 'yes']);
 });
 

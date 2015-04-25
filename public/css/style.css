@@ -1,0 +1,35 @@
+html,
+body {
+    font-family: 'Source Sans Pro';
+    font-size: 100.01%;    
+}
+
+.tasks,
+.tasks li {
+    padding: 0;
+    margin: 0;
+}
+
+.tasks {
+    list-style-type: none;
+}
+
+.list-group .passed {
+    color: #999;
+}
+
+.breadcrumb {
+    margin-bottom: 10px;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.jumbotron {
+    padding: 0 15px;
+}
+
+.container .jumbotron {
+    padding: 0 24px;
+}

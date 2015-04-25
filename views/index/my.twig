@@ -1,0 +1,114 @@
+{% extends "layout/base.twig" %}
+
+{% block title %}
+My Workout
+{% endblock %}
+
+{% block content %}
+<p></p>
+
+<ol class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li class="active">My Workout</li>
+</ol>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="btn-group btn-group-justified">
+            <a href="/" class="btn btn-default btn-warning"><i class="fa fa-pause"></i>&nbsp;Pause</a>
+            <a href="/" class="btn btn-default btn-danger"><i class="fa fa-forward"></i>&nbsp; Next exercise</a>    
+        </div>
+    </div>
+</div>
+
+<p></p>
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-play"></i>&nbsp;Curl 3 x 10</div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item passed"><span id="set1"></span> Set 1: 10 reps </li>
+                    <li class="list-group-item"><span id="set2"></span> <strong>Set 2: 10 reps (current)</strong></li>
+                    <li class="list-group-item"><span id="set3"></span> Set 3: 10 reps </li>
+                </ul>
+                
+                <div class="progress active">
+                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 65%">65%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="clearfix"></div>
+    
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-sort-amount-asc"></i>&nbsp;Next to do</div>
+            <div class="panel-body">
+
+                <ul class="tasks">
+                    <li>Pulling 3 x 10 (superseries)</li>
+                    <li>Pushups 4 x 8</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="clearfix"></div>
+
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-users"></i>&nbsp;Leaderboard</div>
+            <div class="panel-body">
+                <ol class="tasks">
+                    <li>1. <a href="">Ironman</a></li>
+                    <li>2. <a href="">Arnie The Governator</a></li>
+                    <li>...</li>
+                    <li>459. <strong>Conan The Barbarian (you)</strong></li>
+                    <li>460. <a href="">Bob Square Muscules</a>
+                </ol>
+            </div>
+        </div>
+    </div>
+    
+    <div class="clearfix"></div>
+
+    <div class="col-xs-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-flag"></i>&nbsp;Badges</div>
+            <div class="panel-body">
+                <ul class="tasks">
+                    <li>5 days streak</li>
+                    <li>Berlin weakest</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+     
+    <div class="col-xs-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-line-chart"></i>&nbsp;Social</div>
+            <div class="panel-body">
+                <ul class="tasks">
+                    <li><strong>47</strong> persons likes you</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="clearfix"></div>
+    
+</div>
+
+<script type="text/javascript" src="public/js/jquery.sparkline.min.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        jQuery('#set1').sparkline([5,6,7,9,9,5,3,2,2,4,6,7], {type: 'line'});
+        jQuery('#set2').sparkline([6,7,9,9,5,3,2,2,4,6,0,0], {type: 'line'});
+        jQuery('#set3').sparkline([0,0,0,0,0,0,0,0,0,0,0,0], {type: 'line'});
+    });
+</script>
+{% endblock %}
