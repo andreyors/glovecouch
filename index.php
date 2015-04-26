@@ -27,6 +27,8 @@ $app->get('/my', function() use ($app, $db) {
   
   $cnt = $res ? $res->fetchColumn() : 0;
   
+  $cnt = $cnt > 30 ? 30 : $cnt;
+  
   $app->render('index/my.twig', array('cnt' => $cnt));
 }); 
 
@@ -38,6 +40,8 @@ $app->get('/workout', function() use ($app, $db) {
   $res = $db->query($sql);
   
   $cnt = $res ? $res->fetchColumn() : 0;
+  
+  $cnt = $cnt > 30 ? 30 : $cnt;
   
   $app->render('index/workout.twig', array('like' => intval($like), 'cnt' => $cnt ));
 });
