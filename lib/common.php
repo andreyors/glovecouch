@@ -11,3 +11,13 @@ function API() {
     'json.override_notfound' => true
   ]));
 }
+
+function DB($db_dsn, $db_user, $db_pass) {
+    $dbh = new PDO($db_dsn, $db_user, $db_pass);  
+    
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $dbh->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, 'SET NAMES utf8');
+    $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
+    return $dbh;
+}

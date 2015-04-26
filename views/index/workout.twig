@@ -13,15 +13,61 @@ Buds' Workout
 </ol>
 
 <div class="row">
-    <p></p>
     <div class="col-xs-12">
-        <a href="/" class="btn btn-default btn-primary"><i class="fa fa-bolt"></i>&nbsp;&nbsp;Give him powah</a>
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-street-view"></i>&nbsp;Workout on air</div>
+            <div class="panel-body">
+                Started 1 minute ago
+                
+                <div class="progress active">
+                    <div class="progress-bar progress-bar-default progress-bar-striped" role="progressbar" aria-valuenow="{{ (cnt * 100 / 30) | round }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ (cnt * 100 / 30) | round }}%">{{ (cnt * 100 / 30) | round }}%</div>
+                </div>
+            </div>
+        </div>
     </div>
+    
+    <div class="col-xs-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-user-secret"></i>&nbsp;Who's on workout</div>
+            <div class="panel-body">
+                <span>
+                    <strong>Conan The B.</strong><br />
+                    Crazy man with a sword<br />
+                    459th in ranking
+                </span>  
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-xs-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-tags"></i>&nbsp;Badges & Social</div>
+            <div class="panel-body">
+                <ul class="tasks">
+                    <li>5 days streak</li>
+                    <li>Berlin weakest</li>
+                    <li><strong>47</strong> persons likes you</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% if not like %}
+    <div class="col-xs-12">
+        <a id="likeBtn" href="/like" class="btn btn-default btn-primary btn-lg"><i class="fa fa-bolt"></i>&nbsp;&nbsp;Give him high powah</a>
+    </div>
+    {% else %}
+    <div class="col-xs-12">
+        <div class="well">Power is shipped</div>
+    </div>
+    {% endif %}
 </div>
 
-<div class="row">
-    <div class="col-xs-12">
-        
-    </div>
-</div>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        jQuery('#likeBtn').on('click', function(e) {
+            e.preventDefault();
+            jQuery.ajax('/ajax/like');
+        });  
+    });
+</script>
 {% endblock %}

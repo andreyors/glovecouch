@@ -1,7 +1,8 @@
 html,
 body {
     font-family: 'Source Sans Pro';
-    font-size: 100.01%;    
+    font-size: 100.01%;
+    text-rendering: optimizeLegibility;
 }
 
 .tasks,
@@ -32,4 +33,14 @@ body {
 
 .container .jumbotron {
     padding: 0 24px;
+}
+
+#vid {
+  content: "";
+  position: fixed;
+  top: -15px;
+  left: -15px;
+  display: block;
+  z-index: -1;
+  opacity: 0.8;
 }
