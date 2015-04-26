@@ -14,43 +14,19 @@ My Workout
 
 <p></p>
 
-
-
 <div class="row">
     <div class="col-xs-12">
         <div class="panel panel-default">
             <div class="panel-heading"><i class="fa fa-play"></i>&nbsp;Curl 3 x 10</div>
-            <div class="panel-body">
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <span id="set1"></span> <strong>Set 1: 10 reps (current)</strong>
-                        <span class="badge">{{ cnt }}</span>
-                    </li>
-                    <li class="list-group-item">
-                        <span id="set2"></span> Set 2: 10 reps
-                        <span class="badge">0</span>
-                    </li>
-                    <li class="list-group-item">
-                        <span id="set3"></span> Set 3: 10 reps
-                        <span class="badge">0</span>
-                    </li>
-                </ul>
-                
-                <div class="progress active">
-                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{ (cnt * 100 / 30) | round }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ (cnt * 100 / 30) | round }}%">{{ (cnt * 100 / 30) | round }}%</div>
-                </div>
-                
-                <div class="btn-group btn-group-justified">
-                    <a href="/" class="btn btn-default btn-default"><i class="fa fa-pause"></i>&nbsp;Pause</a>
-                    <a href="/" class="btn btn-default btn-primary"><i class="fa fa-forward"></i>&nbsp; Next exercise</a>    
-                </div>
+            <div class="panel-body" id="partial-progress">
+                {% include 'partials/progress.twig' %}
             </div>
         </div>
     </div>
     
     <div class="clearfix"></div>
     
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-sm-6 col-lg-4">
         <div class="panel panel-default">
             <div class="panel-heading"><i class="fa fa-sort-amount-asc"></i>&nbsp;Next to do</div>
             <div class="panel-body">
@@ -63,9 +39,7 @@ My Workout
         </div>
     </div>
     
-    <div class="clearfix"></div>
-
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-sm-6 col-lg-4">
         <div class="panel panel-default">
             <div class="panel-heading"><i class="fa fa-users"></i>&nbsp;Leaderboard</div>
             <div class="panel-body">
@@ -79,17 +53,15 @@ My Workout
             </div>
         </div>
     </div>
-    
-    <div class="clearfix"></div>
 
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-sm-12 col-lg-4">
         <div class="panel panel-default">
-            <div class="panel-heading"><i class="fa fa-tags"></i>&nbsp;Badges & Socials</div>
+            <div class="panel-heading"><i class="fa fa-tags"></i>&nbsp;Badges & Social</div>
             <div class="panel-body">
                 <ul class="tasks">
-                    <li>5 days streak</li>
-                    <li>Berlin weakest</li>
-                    <li><strong>47</strong> persons likes him</li>
+                    <li>5d streak</li>
+                    <li>Berliner Donat</li>
+                    <li><strong>47</strong> persons likes you</li>
                 </ul>
             </div>
         </div>
@@ -101,10 +73,19 @@ My Workout
 
 <script type="text/javascript" src="public/js/jquery.sparkline.min.js"></script>
 <script type="text/javascript">
+    function pollProgress() {
+        console.log('here');
+        jQuery.ajax({
+            url: '/ajax/partial/progress',
+            success: function(data) {
+                jQuery('#partial-progress').html(data);
+            }
+        });
+        setTimeout(pollProgress, 3000); // you could choose not to continue on failure...
+    }
+
     jQuery(document).ready(function() {
-        jQuery('#set1').sparkline([5,6,7,9,9,5,3,2,2,4,6,7], {type: 'line'});
-        jQuery('#set2').sparkline([6,7,9,9,5,3,2,2,4,6,0,0], {type: 'line'});
-        jQuery('#set3').sparkline([0,0,0,0,0,0,0,0,0,0,0,0], {type: 'line'});
+        setTimeout(pollProgress, 3000);
     });
 </script>
 {% endblock %}

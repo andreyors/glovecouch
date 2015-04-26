@@ -22,7 +22,7 @@ $app->get('/', function() use ($app, $db) {
 });
 
 $app->get('/my', function() use ($app, $db) {
-  $sql = "SELECT COUNT(1) cnt FROM (SELECT a1.ts, a1.z, MAX(a2.z) highest FROM gc_events a1 LEFT JOIN gc_events a2 ON a2.ts BETWEEN DATE_SUB(a1.ts, INTERVAL 15 SECOND) AND DATE_ADD(a1.ts, INTERVAL 15 SECOND) GROUP BY a1.ts, a1.z HAVING a1.z = highest ORDER BY a1.ts) max";
+  $sql = "SELECT COUNT(1) cnt FROM (SELECT a1.ts, a1.z, MAX(a2.z) highest FROM gc_events a1 LEFT JOIN gc_events a2 ON a2.ts BETWEEN DATE_SUB(a1.ts, INTERVAL 2 SECOND) AND DATE_ADD(a1.ts, INTERVAL 2 SECOND) GROUP BY a1.ts, a1.z HAVING a1.z = highest ORDER BY a1.ts) max";
   $res = $db->query($sql);
   
   $cnt = $res ? $res->fetchColumn() : 0;
@@ -34,7 +34,7 @@ $app->get('/workout', function() use ($app, $db) {
   $res = $db->query("SELECT val_int FROM gc_switches WHERE name = 'like'");
   $like = $res->fetchColumn();
   
-  $sql = "SELECT COUNT(1) cnt FROM (SELECT a1.ts, a1.z, MAX(a2.z) highest FROM gc_events a1 LEFT JOIN gc_events a2 ON a2.ts BETWEEN DATE_SUB(a1.ts, INTERVAL 15 SECOND) AND DATE_ADD(a1.ts, INTERVAL 15 SECOND) GROUP BY a1.ts, a1.z HAVING a1.z = highest ORDER BY a1.ts) max";
+  $sql = "SELECT COUNT(1) cnt FROM (SELECT a1.ts, a1.z, MAX(a2.z) highest FROM gc_events a1 LEFT JOIN gc_events a2 ON a2.ts BETWEEN DATE_SUB(a1.ts, INTERVAL 2 SECOND) AND DATE_ADD(a1.ts, INTERVAL 2 SECOND) GROUP BY a1.ts, a1.z HAVING a1.z = highest ORDER BY a1.ts) max";
   $res = $db->query($sql);
   
   $cnt = $res ? $res->fetchColumn() : 0;
@@ -50,12 +50,23 @@ $app->get('/ajax/like', function() use ($app, $db) {
   $db->exec("UPDATE gc_switches SET val_int = 1 WHERE name = 'like'");
 });
 
-$app->get('/api/clinch', 'API', function() use ($app) {
+$app->get('/ajax/partial/progress', function() use ($app, $db) {
+  $sql = "SELECT COUNT(1) cnt FROM (SELECT a1.ts, a1.z, MAX(a2.z) highest FROM gc_events a1 LEFT JOIN gc_events a2 ON a2.ts BETWEEN DATE_SUB(a1.ts, INTERVAL 2 SECOND) AND DATE_ADD(a1.ts, INTERVAL 2 SECOND) GROUP BY a1.ts, a1.z HAVING a1.z = highest ORDER BY a1.ts) max";
+  $res = $db->query($sql);
+  
+  $cnt = $res ? $res->fetchColumn() : 0;
+  
+  $app->render('partials/progress.twig', array('cnt' => $cnt));
+});
+
+$app->get('/api/clinch', 'API', function() use ($app, $db) {
+  $db->exec("TRUNCATE gc_events");
+  
   $app->render(200, ['times' => '10', 'sets' => '3', 'pause' => '20']);
 });
 
 $app->get('/api/progress', 'API', function() use ($app, $db) {
-  $sql = "SELECT COUNT(1) cnt FROM (SELECT a1.ts, a1.z, MAX(a2.z) highest FROM gc_events a1 LEFT JOIN gc_events a2 ON a2.ts BETWEEN DATE_SUB(a1.ts, INTERVAL 15 SECOND) AND DATE_ADD(a1.ts, INTERVAL 15 SECOND) GROUP BY a1.ts, a1.z HAVING a1.z = highest ORDER BY a1.ts) max";
+  $sql = "SELECT COUNT(1) cnt FROM (SELECT a1.ts, a1.z, MAX(a2.z) highest FROM gc_events a1 LEFT JOIN gc_events a2 ON a2.ts BETWEEN DATE_SUB(a1.ts, INTERVAL 2 SECOND) AND DATE_ADD(a1.ts, INTERVAL 2 SECOND) GROUP BY a1.ts, a1.z HAVING a1.z = highest ORDER BY a1.ts) max";
   $res = $db->query($sql);
   
   $cnt = $res ? $res->fetchColumn() : 0;

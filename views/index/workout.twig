@@ -26,14 +26,28 @@ Buds' Workout
         </div>
     </div>
     
+    {% if not like %}
+    <div class="col-xs-12">
+        <a id="likeBtn" href="/like" class="btn btn-block btn-primary btn-lg"><i class="fa fa-hand-o-up"></i>&nbsp;Give a glove</a>
+    </div>
+    {% else %}
+    <div class="col-xs-12">
+        <div class="well">Power is shipped</div>
+    </div>
+    {% endif %}
+    
+    <div class="clearfix"></div>
+    
+    <p><br /></p>
+    
     <div class="col-xs-6">
         <div class="panel panel-default">
             <div class="panel-heading"><i class="fa fa-user-secret"></i>&nbsp;Who's on workout</div>
             <div class="panel-body">
                 <span>
-                    <strong>Conan The B.</strong><br />
-                    Crazy man with a sword<br />
-                    459th in ranking
+                    <strong>Conan T.</strong><br />
+                    Crazy glover<br />
+                    459th in <strong>G<span style="color: pink">love</span></strong>Rank
                 </span>  
             </div>
         </div>
@@ -44,22 +58,14 @@ Buds' Workout
             <div class="panel-heading"><i class="fa fa-tags"></i>&nbsp;Badges & Social</div>
             <div class="panel-body">
                 <ul class="tasks">
-                    <li>5 days streak</li>
-                    <li>Berlin weakest</li>
-                    <li><strong>47</strong> persons likes you</li>
+                    <li>5d streak</li>
+                    <li>Berliner Donat</li>
+                    <li><strong>47</strong> persons likes him</li>
                 </ul>
             </div>
         </div>
     </div>
-    {% if not like %}
-    <div class="col-xs-12">
-        <a id="likeBtn" href="/like" class="btn btn-default btn-primary btn-lg"><i class="fa fa-bolt"></i>&nbsp;&nbsp;Give him high powah</a>
-    </div>
-    {% else %}
-    <div class="col-xs-12">
-        <div class="well">Power is shipped</div>
-    </div>
-    {% endif %}
+    
 </div>
 
 <script type="text/javascript">
