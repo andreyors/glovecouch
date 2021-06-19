@@ -1,7 +1,7 @@
 {
     "require": {
         "slim/slim": "2.6.*",
-        "dogancelik/slim-json": "0.2.*",
+        "dogancelik/slim-json": "0.4.*",
         "slim/views": "0.1.*",
         "twig/twig": "1.*"
     }

@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "56c18a014751c0d38d84f0a484738a5c",
+    "content-hash": "e66262ce8105b2ab95e7dbe52cea4a32",
     "packages": [
         {
             "name": "dogancelik/slim-json",
-            "version": "v0.2.0",
+            "version": "v0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dogancelik/slim-json.git",
-                "reference": "64c9cfd0a74fb78a6dccb44a5eb8bc905aa549ce"
+                "reference": "52ce20f5e89ee25a2656431d94ca852874dc87d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dogancelik/slim-json/zipball/64c9cfd0a74fb78a6dccb44a5eb8bc905aa549ce",
-                "reference": "64c9cfd0a74fb78a6dccb44a5eb8bc905aa549ce",
+                "url": "https://api.github.com/repos/dogancelik/slim-json/zipball/52ce20f5e89ee25a2656431d94ca852874dc87d8",
+                "reference": "52ce20f5e89ee25a2656431d94ca852874dc87d8",
                 "shasum": ""
             },
             "require": {
@@ -48,7 +48,11 @@
                 "slim",
                 "view"
             ],
-            "time": "2014-05-07T23:30:53+00:00"
+            "support": {
+                "issues": "https://github.com/dogancelik/slim-json/issues",
+                "source": "https://github.com/dogancelik/slim-json/tree/v0.4.0"
+            },
+            "time": "2015-09-15T22:55:20+00:00"
         },
         {
             "name": "slim/slim",
@@ -216,5 +220,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
